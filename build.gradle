@@ -58,7 +58,7 @@ processResources
                 include 'mcmod.info'
 
                 // replace version and mcversion
-                expand 'version': project.version, 'mcversion': project.minecraft.version
+                expand 'mod_version':mod_version, 'mc_version': mc_version
             }
 
             // copy everything else, thats not the mcmod.info
@@ -67,36 +67,22 @@ processResources
             }
         }
 
-sourceSets {
-    api {
-        java {
-            srcDir "$projectDir"
-            include "src/api/java"
-        }
-    }
-}
-
 jar() {
-    from(sourceSets.main.output, sourceSets.api.output)
+    from(sourceSets.main.output)
 }
 
 task sourceJar(type: Jar) {
-    from(sourceSets.main.java, sourceSets.api.output)
+    from(sourceSets.main.java)
     classifier = "src"
 }
 
 task devJar(type: Jar) {
-    from (sourceSets.main.output, sourceSets.api.output)
+    from (sourceSets.main.output)
     classifier = "deobf"
 }
 
-task apiJar(type: Jar) {
-    from (sourceSets.api.output)
-    classifier = "api"
-}
-
 artifacts {
-    archives sourceJar, devJar, apiJar
+    archives sourceJar, devJar
 }
 
 dependencies {
