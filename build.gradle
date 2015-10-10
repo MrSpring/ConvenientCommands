@@ -20,6 +20,8 @@ plugins {
     id "net.minecraftforge.gradle.forge" version "2.0.1"
 }
 
+apply plugin: 'maven'
+
 String mod_version = "1.0.0"
 String mc_version = "1.8"
 version = "${mod_version}-${mc_version}"
@@ -85,13 +87,12 @@ configurations {
 }
 
 dependencies {
-    deployerJars "org.apache.maven.wagon:wagon-ftp:2.10"
+    deployerJars "org.apache.maven.wagon:wagon-ftp:2.2"
 }
 
 uploadArchives {
-    dependsOn "reobf"
+    dependsOn "build"
     repositories {
-        apply plugin: 'maven'
         mavenDeployer {
             configuration = configurations.deployerJars
             repository(url: "${config.maven_url}") {
