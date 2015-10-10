@@ -1,0 +1,16 @@
+[
+  {
+    "modid": "ccommands",
+    "name": "Convenient Commands",
+    "description": "A currently small mod that adds a few convenient commands",
+    "version": "${mod_version}",
+    "mcversion": "${mc_version}",
+    "url": "http://www.mrspring.dk/",
+    "updateUrl": "",
+    "authors": ["MrSpring"],
+    "credits": "Made by Mr. Spring",
+    "logoFile": "",
+    "screenshots": [],
+    "dependencies": []
+  }
+]
