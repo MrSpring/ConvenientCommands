@@ -1,0 +1,11 @@
+command.set_attributes.usage=/set [-p <player>] <attribute> <value>
+command.set_attributes.success=§aAttribute: §r%s§a set successfully!
+command.set_attributes.failure=§cAttribute: §r%s§c not recognised! Use "/set help" for a list of attributes
+
+command.get_attributes.usage=/get [-p <player>] <attribute>
+command.get_attributes.success=§aAttribute: §r%s§a: %s
+command.get_attributes.failure=§cAttribute: §r%s§c not recognised! Use "/set help" for a list of attributes
+
+command.nbt.usage="/nbt [-p <player>] <path->to->nbt_tag>
+command.nbt.failure.empty_hand=§cPlayer not holding item!
+command.nbt.failure.no_tag_on_item=Item does not have an NBT tag!
