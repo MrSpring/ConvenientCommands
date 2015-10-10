@@ -1,0 +1,16 @@
+[
+  {
+    "modid": "ccommands",
+    "name": "Convenient Commands",
+    "description": "A currently small mod that adds a few convenient commands",
+    "version": "1.0.0",
+    "mcversion": "1.8",
+    "url": "http://www.mrspring.dk/mods/kitchen/",
+    "updateUrl": "",
+    "authors": ["MrSpring"],
+    "credits": "Made by Mr. Spring",
+    "logoFile": "",
+    "screenshots": [],
+    "dependencies": []
+  }
+]
