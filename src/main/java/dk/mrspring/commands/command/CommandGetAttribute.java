@@ -1,5 +1,6 @@
 package dk.mrspring.commands.command;
 
+import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayerMP;
 
@@ -26,16 +27,15 @@ public class CommandGetAttribute extends CommandAttributeBase
     }
 
     @Override
-    public void doFromCommand(ICommandSender sender, EntityPlayerMP player, IAttributeHandler handler, String[] arguments)
+    public void doFromCommand(ICommandSender sender, EntityPlayerMP player, IAttributeHandler handler, String[] arguments) throws CommandException
     {
         Object result = handler.getAttribute(this, sender, player, arguments);
         if (result != null)
-            func_152373_a(sender, this, "command.get_attributes.success", handler.getName(), result.toString());
-
+            notifyOperators(sender, this, "command.get_attributes.success", handler.getName(), result.toString());
     }
 
     @Override
-    public String getCommandName()
+    public String getName()
     {
         return "get";
     }

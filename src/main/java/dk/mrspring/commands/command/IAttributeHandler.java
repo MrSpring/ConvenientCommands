@@ -1,5 +1,6 @@
 package dk.mrspring.commands.command;
 
+import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayerMP;
 
@@ -14,7 +15,7 @@ public interface IAttributeHandler
 
     String getGetDescription(ICommandSender sender);
 
-    boolean setAttribute(CommandSetAttribute command, ICommandSender sender, EntityPlayerMP player, String[] arguments);
+    boolean setAttribute(CommandSetAttribute command, ICommandSender sender, EntityPlayerMP player, String[] arguments) throws CommandException;
 
-    Object getAttribute(CommandGetAttribute command, ICommandSender sender, EntityPlayerMP player, String[] arguments);
+    Object getAttribute(CommandGetAttribute command, ICommandSender sender, EntityPlayerMP player, String[] arguments) throws CommandException;
 }

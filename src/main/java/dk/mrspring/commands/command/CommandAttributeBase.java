@@ -1,11 +1,9 @@
 package dk.mrspring.commands.command;
 
-import net.minecraft.command.CommandBase;
-import net.minecraft.command.CommandException;
-import net.minecraft.command.ICommandSender;
-import net.minecraft.command.WrongUsageException;
+import net.minecraft.command.*;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.server.MinecraftServer;
+import net.minecraft.util.BlockPos;
 import org.apache.commons.lang3.ArrayUtils;
 
 import java.util.*;
@@ -27,7 +25,7 @@ public abstract class CommandAttributeBase extends CommandBase
     public abstract String getCommandFailure(ICommandSender sender);
 
     @Override
-    public List addTabCompletionOptions(ICommandSender sender, String[] arguments)
+    public List addTabCompletionOptions(ICommandSender sender, String[] arguments, BlockPos pos)
     {
         Collection<String> attributeCollection = handlers.keySet();
         String[] attributes = attributeCollection.toArray(new String[attributeCollection.size()]);
@@ -43,7 +41,7 @@ public abstract class CommandAttributeBase extends CommandBase
     }
 
     @Override
-    public void processCommand(ICommandSender sender, String[] arguments)
+    public void execute(ICommandSender sender, String[] arguments) throws CommandException
     {
         if (arguments.length > 0)
         {
@@ -69,5 +67,5 @@ public abstract class CommandAttributeBase extends CommandBase
         return handlers.values();
     }
 
-    public abstract void doFromCommand(ICommandSender sender, EntityPlayerMP player, IAttributeHandler handler, String[] arguments);
+    public abstract void doFromCommand(ICommandSender sender, EntityPlayerMP player, IAttributeHandler handler, String[] arguments) throws CommandException;
 }

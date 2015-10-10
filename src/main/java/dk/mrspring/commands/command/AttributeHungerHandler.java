@@ -1,6 +1,7 @@
 package dk.mrspring.commands.command;
 
 import net.minecraft.command.CommandBase;
+import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayerMP;
 
@@ -28,15 +29,15 @@ public class AttributeHungerHandler implements IAttributeHandler
     }
 
     @Override
-    public boolean setAttribute(CommandSetAttribute command, ICommandSender sender, EntityPlayerMP player, String[] arguments)
+    public boolean setAttribute(CommandSetAttribute command, ICommandSender sender, EntityPlayerMP player, String[] arguments) throws CommandException
     {
-        int setting = CommandBase.parseInt(sender, arguments[0]);
+        int setting = CommandBase.parseInt(arguments[0]);
         player.getFoodStats().setFoodLevel(setting);
         return true;
     }
 
     @Override
-    public Object getAttribute(CommandGetAttribute command, ICommandSender sender, EntityPlayerMP player, String[] arguments)
+    public Object getAttribute(CommandGetAttribute command, ICommandSender sender, EntityPlayerMP player, String[] arguments) throws CommandException
     {
         return player.getFoodStats().getFoodLevel();
     }

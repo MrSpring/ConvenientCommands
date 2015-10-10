@@ -1,6 +1,7 @@
 package dk.mrspring.commands.command;
 
 import net.minecraft.command.CommandBase;
+import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayerMP;
 
@@ -28,15 +29,15 @@ public class AttributeHealthHandler implements IAttributeHandler
     }
 
     @Override
-    public boolean setAttribute(CommandSetAttribute command, ICommandSender sender, EntityPlayerMP player, String[] arguments)
+    public boolean setAttribute(CommandSetAttribute command, ICommandSender sender, EntityPlayerMP player, String[] arguments) throws CommandException
     {
-        int setting = CommandBase.parseIntBounded(sender, arguments[0], 0, (int) player.getMaxHealth());
+        int setting = CommandBase.parseInt(arguments[0], 0, (int) player.getMaxHealth());
         player.setHealth(setting);
         return true;
     }
 
     @Override
-    public Object getAttribute(CommandGetAttribute command, ICommandSender sender, EntityPlayerMP player, String[] arguments)
+    public Object getAttribute(CommandGetAttribute command, ICommandSender sender, EntityPlayerMP player, String[] arguments) throws CommandException
     {
         return player.getHealth();
     }
